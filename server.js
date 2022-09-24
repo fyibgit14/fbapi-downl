@@ -10,7 +10,10 @@ app.use(cors());
 app.get('/api/:sufix', function(req, res) {
     let d = req.params.sufix;
      let a = "https://www.facebook.com/watch?v=" + d;
-  getFBInfo(a).then(result => res.json(result)   ).catch(error => console.log("Error:", error));
+  getFBInfo(a).then(result => {
+  result["success"] = "true";
+  res.json(result);
+}   ).catch(error => console.log("Error:", error));
   
   });
 
